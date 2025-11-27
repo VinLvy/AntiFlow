@@ -60,8 +60,8 @@ export default function GeneratorForm({ onTaskCreated }: GeneratorFormProps) {
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all [&>option]:bg-gray-900"
                         >
                             <option>Short (&lt; 1 min)</option>
-                            <option>Medium (1-3 min)</option>
-                            <option>Long (3+ min)</option>
+                            <option>Medium (4-6 min)</option>
+                            <option>Long (8+ min)</option>
                         </select>
                     </div>
 

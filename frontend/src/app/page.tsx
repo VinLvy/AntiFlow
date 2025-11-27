@@ -47,7 +47,7 @@ export default function Home() {
 
         <footer className="mt-24 text-center text-gray-600 text-sm">
           <p className="flex items-center justify-center gap-2">
-            Powered by <Zap className="w-4 h-4 text-yellow-500" /> Prototype-6 Engine
+            Powered by <Zap className="w-4 h-4 text-yellow-500" /> AntiFlow Engine
           </p>
         </footer>
       </div>
