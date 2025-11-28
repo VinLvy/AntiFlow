@@ -1,25 +1,24 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Loader2, Sparkles } from 'lucide-react';
 import { generateContent } from '@/lib/api';
 
-interface GeneratorFormProps {
-    onTaskCreated: (taskId: string) => void;
-}
-
-export default function GeneratorForm({ onTaskCreated }: GeneratorFormProps) {
+export default function GeneratorForm() {
     const [topic, setTopic] = useState('');
     const [duration, setDuration] = useState('Short (< 1 min)');
     const [mood, setMood] = useState('Motivational');
     const [isLoading, setIsLoading] = useState(false);
+
+    const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         try {
             const response = await generateContent({ topic, duration_target: duration, mood });
-            onTaskCreated(response.task_id);
+            router.push(`/result/${response.task_id}`);
         } catch (error) {
             console.error("Failed to start generation", error);
         } finally {
