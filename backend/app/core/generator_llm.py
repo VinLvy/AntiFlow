@@ -1,23 +1,19 @@
 import os
 import json
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Configure Gemini
-GENAI_API_KEY = os.getenv("GENAI_API_KEY")
-if GENAI_API_KEY:
-    genai.configure(api_key=GENAI_API_KEY)
-
 async def generate_script(topic: str, duration: str, mood: str) -> dict:
     """
-    Generates a video script using Google Gemini.
+    Generates a video script using Google Gemini (New SDK).
     """
-    if not GENAI_API_KEY:
+    api_key = os.getenv("GENAI_API_KEY")
+    if not api_key:
         raise ValueError("GENAI_API_KEY not found in environment variables")
 
-    model = genai.GenerativeModel('gemini-pro')
+    client = genai.Client(api_key=api_key)
 
     system_prompt = """
     You are an AI Content Factory specialized in creating scripts for YouTube videos.
@@ -47,7 +43,11 @@ async def generate_script(topic: str, duration: str, mood: str) -> dict:
     prompt = system_prompt.format(topic=topic, duration=duration, mood=mood)
 
     try:
-        response = model.generate_content(prompt)
+        response = await client.aio.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
+        
         # Clean up potential markdown code blocks
         text = response.text.strip()
         if text.startswith("```json"):
