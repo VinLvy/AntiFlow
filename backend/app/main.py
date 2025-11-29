@@ -48,9 +48,15 @@ async def process_generation(task_id: str, request: GenerateRequest, task_dir: s
             audio_path = os.path.join(task_dir, f"audio_{scene['id']}.mp3")
             audio_tasks.append(generate_audio(scene['narration'], audio_path))
             
-            # Image
-            image_path = os.path.join(task_dir, f"image_{scene['id']}.jpg")
-            image_tasks.append(generate_image(scene['visual_prompt'], image_path))
+            # Image - Only for short duration
+            # Stricter check: Only generate images if "short" is explicitly in the duration
+            duration_lower = request.duration_target.lower()
+            should_generate_images = "short" in duration_lower
+            print(f"DEBUG: duration='{request.duration_target}', generate_images={should_generate_images}")
+            
+            if should_generate_images:
+                image_path = os.path.join(task_dir, f"image_{scene['id']}.jpg")
+                image_tasks.append(generate_image(scene['visual_prompt'], image_path))
             
         await asyncio.gather(*audio_tasks, *image_tasks)
         
