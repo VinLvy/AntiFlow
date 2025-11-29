@@ -3,7 +3,8 @@ import shutil
 import uuid
 import json
 
-TEMP_STORAGE_DIR = "backend/temp_storage"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+TEMP_STORAGE_DIR = os.path.join(BASE_DIR, "temp_storage")
 
 def create_task_directory() -> str:
     """
@@ -34,5 +35,6 @@ def create_zip_archive(task_dir: str, task_id: str) -> str:
     zip_filename = f"{task_id}.zip"
     zip_path = os.path.join(TEMP_STORAGE_DIR, zip_filename)
     
-    shutil.make_archive(zip_path.replace('.zip', ''), 'zip', task_dir)
+    base_name = os.path.splitext(zip_path)[0]
+    shutil.make_archive(base_name, 'zip', task_dir)
     return zip_path
