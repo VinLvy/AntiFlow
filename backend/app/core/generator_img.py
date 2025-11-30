@@ -7,7 +7,7 @@ async def generate_image(prompt: str, output_path: str) -> str:
     Generates an image using Pollinations.ai.
     """
     # Add style modifiers
-    base_prompt = "minimalist stickman drawing, thick black ink lines, white background, {}, hand drawn style, sketch, no text"
+    base_prompt = "modern minimalist style, blue, green & soft yellow color palette, {}, no text"
     final_prompt = base_prompt.format(prompt)
     
     encoded_prompt = urllib.parse.quote(final_prompt)
