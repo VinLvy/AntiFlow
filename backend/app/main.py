@@ -65,6 +65,7 @@ async def process_generation(task_id: str, request: GenerateRequest, task_dir: s
         
         tasks[task_id]["status"] = "completed"
         tasks[task_id]["download_url"] = f"/api/v1/download/{task_id}"
+        tasks[task_id]["file_path"] = zip_path
         
     except Exception as e:
         tasks[task_id]["status"] = "failed"
