@@ -74,9 +74,7 @@ export default function ResultPage() {
                     <h3 className="text-2xl font-bold text-white mb-4">Generating Assets...</h3>
                     <p className="text-gray-400 text-lg">AI is crafting your assets.</p>
                     <div className="mt-8 flex justify-center gap-4 text-sm text-gray-500">
-                        <span className="flex items-center gap-2"><FileText className="w-4 h-4 animate-bounce delay-100" /> Script</span>
-                        <span className="flex items-center gap-2"><Music className="w-4 h-4 animate-bounce delay-200" /> Audio</span>
-                        {/* <span className="flex items-center gap-2"><ImageIcon className="w-4 h-4 animate-bounce delay-300" /> Images</span> */}
+                        <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-bounce delay-100" /> Please wait...</span>
                     </div>
                 </div>
             </div>
@@ -140,12 +138,12 @@ export default function ResultPage() {
                                 {result.file_path || 'Location unavailable'}
                             </code>
                         </div>
-                        <button
+                        {/* <button
                             onClick={() => router.push('/')}
                             className="flex items-center justify-center gap-3 bg-white/10 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors"
                         >
                             Create Another Video
-                        </button>
+                        </button> */}
                     </div>
 
                     {result.preview_data && (
