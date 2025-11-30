@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Download, Loader2, AlertCircle, FileText, Image as ImageIcon, Music, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, Loader2, AlertCircle, FileText, Image as ImageIcon, Music, ArrowLeft } from 'lucide-react';
 import { checkStatus, TaskResult } from '@/lib/api';
 
 export default function ResultPage() {
@@ -72,11 +72,11 @@ export default function ResultPage() {
                         <Loader2 className="absolute inset-0 m-auto w-10 h-10 text-indigo-400 animate-pulse" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-4">Generating Assets...</h3>
-                    <p className="text-gray-400 text-lg">AI is crafting your script, audio, and visuals.</p>
+                    <p className="text-gray-400 text-lg">AI is crafting your assets.</p>
                     <div className="mt-8 flex justify-center gap-4 text-sm text-gray-500">
                         <span className="flex items-center gap-2"><FileText className="w-4 h-4 animate-bounce delay-100" /> Script</span>
                         <span className="flex items-center gap-2"><Music className="w-4 h-4 animate-bounce delay-200" /> Audio</span>
-                        <span className="flex items-center gap-2"><ImageIcon className="w-4 h-4 animate-bounce delay-300" /> Images</span>
+                        {/* <span className="flex items-center gap-2"><ImageIcon className="w-4 h-4 animate-bounce delay-300" /> Images</span> */}
                     </div>
                 </div>
             </div>
@@ -134,13 +134,12 @@ export default function ResultPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                        <a
-                            href={result.download_url}
-                            className="flex items-center justify-center gap-3 bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-colors transform hover:scale-[1.02] active:scale-[0.98]"
-                        >
-                            <Download className="w-6 h-6" />
-                            Download Asset Kit (.zip)
-                        </a>
+                        <div className="flex flex-col items-center justify-center gap-2 bg-white/5 text-white p-4 rounded-xl border border-white/10 w-full">
+                            <span className="text-gray-400 text-sm uppercase tracking-wider font-bold">File Saved At</span>
+                            <code className="bg-black/30 px-4 py-3 rounded-lg text-sm text-indigo-300 break-all font-mono w-full text-center">
+                                {result.file_path || 'Location unavailable'}
+                            </code>
+                        </div>
                         <button
                             onClick={() => router.push('/')}
                             className="flex items-center justify-center gap-3 bg-white/10 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors"

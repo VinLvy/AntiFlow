@@ -14,6 +14,7 @@ export interface GenerationResponse {
 export interface TaskResult {
   status: 'processing' | 'completed' | 'failed';
   download_url?: string;
+  file_path?: string;
   error?: string;
   preview_data?: {
     title: string;
