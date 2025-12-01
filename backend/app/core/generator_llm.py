@@ -48,7 +48,7 @@ async def generate_script(topic: str, duration: str, mood: str) -> dict:
     }}
 
     Rules:
-    1. The "visual_prompt" should be descriptive but concise, suitable for generating a modern minimalist style image.
+    1. The "visual_prompt" should be descriptive but concise, suitable for generating a modern minimalist person style image.
     2. The "narration" should be engaging and fit the requested mood.
     3. CRITICAL: Ensure the TOTAL word count of all narrations combined is approximately {word_count} to match the target duration.
     4. CRITICAL: Generate approximately {scene_count} to ensure good pacing.
