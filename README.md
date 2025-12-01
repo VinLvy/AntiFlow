@@ -1,26 +1,26 @@
 # AntiFlow (AI Content Factory)
 
-AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist Stickman visual style. It leverages free AI services to produce scripts, voiceovers, and visuals with $0 operational costs.
+AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, voiceovers, and visuals with $0 operational costs.
 
 ## 🚀 Features
 
 -   **Automated Content Generation**: Generates a complete asset kit from a single topic.
 -   **AI Scriptwriting**: Uses Google Gemini Pro to create engaging scripts.
 -   **Text-to-Speech**: Utilizes `edge-tts` for natural-sounding voiceovers.
--   **Visual Generation**: Generates consistent stickman-style illustrations using Pollinations.ai.
+-   **Visual Generation**: Generates consistent modern person-style illustrations using Pollinations.ai.
 -   **Zero Cost**: Built entirely on free-tier or free-to-use APIs.
 
 ## 🛠️ Tech Stack
 
 ### Frontend
--   **Framework**: Next.js 14 (App Router)
+-   **Framework**: Next.js
 -   **Styling**: Tailwind CSS
 -   **Language**: TypeScript
 
 ### Backend
 -   **Framework**: FastAPI (Python)
 -   **AI Integration**:
-    -   LLM: Google Gemini API (`gemini-pro`)
+    -   LLM: Google Gemini API (`gemini-2.0-flash`)
     -   TTS: `edge-tts`
     -   Image Gen: Pollinations.ai
 
@@ -55,27 +55,18 @@ prototype-6/
     cd backend
     ```
 
-2.  Create a virtual environment (optional but recommended):
-    ```bash
-    python -m venv venv
-    # Windows
-    venv\Scripts\activate
-    # macOS/Linux
-    source venv/bin/activate
-    ```
-
-3.  Install dependencies:
+2.  Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  Set up environment variables:
+3.  Set up environment variables:
     Create a `.env` file in the `backend` directory and add your Gemini API key:
     ```env
     GEMINI_API_KEY=your_api_key_here
     ```
 
-5.  Run the server:
+4.  Run the server:
     ```bash
     python -m uvicorn app.main:app --reload
     ```
@@ -105,7 +96,7 @@ prototype-6/
 2.  Enter a video topic (e.g., "How to stop procrastinating").
 3.  Click "Generate".
 4.  Wait for the process to complete. You will see a preview of the generated assets.
-5.  Download the complete asset kit as a `.zip` file.
+5.  The generated assets will be available in the `temp_storage` directory.
 
 ## 📄 License
 
