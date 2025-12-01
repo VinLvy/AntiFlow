@@ -61,11 +61,11 @@ async def process_generation(task_id: str, request: GenerateRequest, task_dir: s
         await asyncio.gather(*audio_tasks, *image_tasks)
         
         # 3. Package
-        zip_path = create_zip_archive(task_dir, task_id)
+        # zip_path = create_zip_archive(task_dir, task_id)
         
         tasks[task_id]["status"] = "completed"
-        tasks[task_id]["download_url"] = f"/api/v1/download/{task_id}"
-        tasks[task_id]["file_path"] = zip_path
+        # tasks[task_id]["download_url"] = f"/api/v1/download/{task_id}"
+        tasks[task_id]["file_path"] = task_dir
         
     except Exception as e:
         tasks[task_id]["status"] = "failed"
