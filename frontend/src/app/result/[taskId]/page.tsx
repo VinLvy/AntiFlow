@@ -69,12 +69,11 @@ export default function ResultPage() {
                     <div className="relative w-24 h-24 mx-auto mb-8">
                         <div className="absolute inset-0 border-4 border-indigo-500/30 rounded-full"></div>
                         <div className="absolute inset-0 border-4 border-indigo-500 rounded-full border-t-transparent animate-spin"></div>
-                        <Loader2 className="absolute inset-0 m-auto w-10 h-10 text-indigo-400 animate-pulse" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-4">Generating Assets...</h3>
                     <p className="text-gray-400 text-lg">AI is crafting your assets.</p>
                     <div className="mt-8 flex justify-center gap-4 text-sm text-gray-500">
-                        <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-bounce delay-100" /> Please wait...</span>
+                        <span className="flex items-center gap-2"> Please wait...</span>
                     </div>
                 </div>
             </div>
@@ -128,10 +127,10 @@ export default function ResultPage() {
                             <CheckCircle2 className="w-10 h-10 text-green-500" />
                         </div>
                         <h1 className="text-4xl font-bold text-white mb-4">Generation Complete!</h1>
-                        <p className="text-xl text-gray-400">Your content kit is ready for download.</p>
+                        <p className="text-xl text-gray-400">Your content kit is ready.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div className="grid grid-cols-1 gap-6 mb-12">
                         <div className="flex flex-col items-center justify-center gap-2 bg-white/5 text-white p-4 rounded-xl border border-white/10 w-full">
                             <span className="text-gray-400 text-sm uppercase tracking-wider font-bold">File Saved At</span>
                             <code className="bg-black/30 px-4 py-3 rounded-lg text-sm text-indigo-300 break-all font-mono w-full text-center">

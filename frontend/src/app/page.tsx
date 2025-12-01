@@ -36,7 +36,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
             Create Viral <br />
             <span className="text-gradient relative">
-              Stickman Videos
+              Modern Minimalist Videos
               <Sparkles className="absolute -top-6 -right-8 w-8 h-8 text-yellow-400 animate-bounce" />
             </span>
           </h1>
