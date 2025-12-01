@@ -22,6 +22,7 @@ export interface TaskResult {
       id: number;
       narration: string;
       visual_prompt: string;
+      chapter?: string;
     }>;
   };
 }

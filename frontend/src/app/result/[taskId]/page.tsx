@@ -165,6 +165,11 @@ export default function ResultPage() {
                                                 <span className="bg-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full border border-indigo-500/20">
                                                     SCENE {scene.id}
                                                 </span>
+                                                {scene.chapter && (
+                                                    <span className="bg-purple-500/20 text-purple-300 text-xs font-bold px-3 py-1 rounded-full border border-purple-500/20">
+                                                        {scene.chapter}
+                                                    </span>
+                                                )}
                                             </div>
                                             <div className="grid md:grid-cols-2 gap-6">
                                                 <div>
