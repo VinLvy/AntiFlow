@@ -66,7 +66,7 @@ export default function StatusDisplay({ taskId, onReset }: StatusDisplayProps) {
                     <Loader2 className="absolute inset-0 m-auto w-8 h-8 text-indigo-400 animate-pulse" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Generating Assets...</h3>
-                <p className="text-gray-400">AI is crafting your script, audio, and visuals.</p>
+                <p className="text-gray-400">AI is crafting your asset kit.</p>
             </div>
         );
     }
