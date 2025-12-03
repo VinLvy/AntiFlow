@@ -1,6 +1,6 @@
 # AntiFlow (AI Content Factory)
 
-AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, and voiceovers with $0 operational costs.
+AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, visual prompts and voiceovers with $0 operational costs.
 
 ## 🚀 Features
 
