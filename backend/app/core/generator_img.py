@@ -1,3 +1,4 @@
+# Not used in current version
 import aiohttp
 import os
 import urllib.parse
