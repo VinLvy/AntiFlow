@@ -1,13 +1,12 @@
 # AntiFlow (AI Content Factory)
 
-AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, voiceovers, and visuals with $0 operational costs.
+AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, and voiceovers with $0 operational costs.
 
 ## 🚀 Features
 
 -   **Automated Content Generation**: Generates a complete asset kit from a single topic.
 -   **AI Scriptwriting**: Uses Google Gemini Pro to create engaging scripts.
 -   **Text-to-Speech**: Utilizes `edge-tts` for natural-sounding voiceovers.
--   **Visual Generation**: Generates consistent modern person-style illustrations using Pollinations.ai.
 -   **Zero Cost**: Built entirely on free-tier or free-to-use APIs.
 
 ## 🛠️ Tech Stack
@@ -22,7 +21,6 @@ AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube 
 -   **AI Integration**:
     -   LLM: Google Gemini API (`gemini-2.0-flash`)
     -   TTS: `edge-tts`
-    -   Image Gen: Pollinations.ai
 
 ## 📂 Project Structure
 
@@ -33,7 +31,7 @@ prototype-6/
 │   └── public/        # Static assets
 ├── backend/           # FastAPI Backend
 │   ├── app/
-│   │   ├── core/      # AI Logic (LLM, TTS, Image)
+│   │   ├── core/      # AI Logic (LLM, TTS)
 │   │   ├── utils/     # File management utilities
 │   │   └── main.py    # API Entry point
 │   ├── temp_storage/  # Generated assets
