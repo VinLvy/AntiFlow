@@ -24,8 +24,16 @@ def save_script(task_dir: str, script_data: dict):
         f.write(f"Title: {script_data.get('title', 'Untitled')}\n\n")
         for scene in script_data.get("scenes", []):
             f.write(f"Scene {scene.get('id')}:\n")
+            if scene.get('chapter'):
+                f.write(f"Chapter: {scene.get('chapter')}\n")
             f.write(f"Narration: {scene.get('narration')}\n")
             f.write(f"Visual: {scene.get('visual_prompt')}\n\n")
+
+    # Save as JSON as well
+    json_path = os.path.join(task_dir, "script.json")
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(script_data, f, indent=4)
+
     return file_path
 
 def create_zip_archive(task_dir: str, task_id: str) -> str:
