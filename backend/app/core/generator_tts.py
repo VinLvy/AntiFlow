@@ -1,7 +1,7 @@
 import edge_tts
 import os
 
-async def generate_audio(text: str, output_path: str, voice: str = "en-US-ChristopherNeural") -> str:
+async def generate_audio(text: str, output_path: str, voice: str = "en-US-AndrewNeural") -> str:
     """
     Generates audio from text using edge-tts.
     """
