@@ -29,6 +29,7 @@ class GenerateRequest(BaseModel):
     topic: str
     duration_target: str
     mood: str
+    voice: str = "en-US-AndrewNeural"
 
 async def process_generation(task_id: str, request: GenerateRequest, task_dir: str):
     try:
@@ -46,7 +47,7 @@ async def process_generation(task_id: str, request: GenerateRequest, task_dir: s
         for scene in script_data.get("scenes", []):
             # Audio
             audio_path = os.path.join(task_dir, f"audio_{scene['id']}.mp3")
-            audio_tasks.append(generate_audio(scene['narration'], audio_path))
+            audio_tasks.append(generate_audio(scene['narration'], audio_path, request.voice))
             
             # Image generation disabled for all durations as per user request
             # Visual prompts are still generated in the script but no images are created
