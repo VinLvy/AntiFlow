@@ -1,0 +1,4 @@
+# Docker
+.Dockerfile
+.dockerignore
+.deploy.ps1
