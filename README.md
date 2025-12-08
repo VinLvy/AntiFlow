@@ -8,6 +8,7 @@ AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube 
 -   **AI Scriptwriting**: Uses Google Gemini Pro to create engaging scripts.
 -   **Visual Prompts**: Generates visual prompts for each scene.
 -   **Text-to-Speech**: Utilizes `edge-tts` for natural-sounding voiceovers.
+-   **Voice Selection**: Allows users to select a voice for the audio.
 -   **Zero Cost**: Built entirely on free-tier or free-to-use APIs.
 
 ## 🛠️ Tech Stack
