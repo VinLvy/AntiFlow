@@ -26,6 +26,21 @@ gcloud init
 2. Kembali ke terminal, pilih Project GCP yang ingin digunakan (buat baru jika belum ada).
 3. (Opsional) Pilih region/zone default (misalnya: `asia-southeast2` untuk Jakarta).
 
+### Setup Permission Service Account (PENTING)
+Deployment menggunakan `--source` membutuhkan Google Cloud Build. Seringkali, *default service account* tidak memiliki izin yang cukup secara default. Jika, anda melihat error `PERMISSION_DENIED` saat deploy, jalankan perintah ini di PowerShell:
+
+```powershell
+# Setup variabel (sesuaikan jika nama project berbeda)
+$ProjectId = "antiflow-backend"
+$ProjectNumber = gcloud projects describe $ProjectId --format="value(projectNumber)"
+
+# 1. Berikan akses Cloud Build Editor
+gcloud projects add-iam-policy-binding $ProjectId --member="serviceAccount:${ProjectNumber}-compute@developer.gserviceaccount.com" --role="roles/cloudbuild.builds.editor"
+
+# 2. Berikan akses Storage Admin (untuk akses source code)
+gcloud projects add-iam-policy-binding $ProjectId --member="serviceAccount:${ProjectNumber}-compute@developer.gserviceaccount.com" --role="roles/storage.admin"
+```
+
 ---
 
 ## 2. Deployment Backend (FastAPI)
