@@ -9,7 +9,6 @@ export default function GeneratorForm() {
     const [topic, setTopic] = useState('');
     const [duration, setDuration] = useState('Short (< 1 min)');
     const [mood, setMood] = useState('Motivational');
-    const [voice, setVoice] = useState('en-US-AndrewNeural');
     const [isLoading, setIsLoading] = useState(false);
 
     const router = useRouter();
@@ -18,7 +17,7 @@ export default function GeneratorForm() {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await generateContent({ topic, duration_target: duration, mood, voice });
+            const response = await generateContent({ topic, duration_target: duration, mood });
             router.push(`/result/${response.task_id}`);
         } catch (error) {
             console.error("Failed to start generation", error);
@@ -80,23 +79,6 @@ export default function GeneratorForm() {
                             <option>Serious</option>
                         </select>
                     </div>
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Voice
-                    </label>
-                    <select
-                        value={voice}
-                        onChange={(e) => setVoice(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all [&>option]:bg-gray-900"
-                    >
-                        <option value="en-US-AndrewNeural">Andrew (Male)</option>
-                        <option value="en-US-AriaNeural">Aria (Female)</option>
-                        <option value="en-US-GuyNeural">Guy (Male)</option>
-                        <option value="en-US-JennyNeural">Jenny (Female)</option>
-                        <option value="en-US-BrianNeural">Brian (Male)</option>
-                    </select>
                 </div>
 
                 <button

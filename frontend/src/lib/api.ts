@@ -4,7 +4,6 @@ export interface GenerationRequest {
   topic: string;
   duration_target: string;
   mood: string;
-  voice: string;
 }
 
 export interface GenerationResponse {
