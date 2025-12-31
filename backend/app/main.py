@@ -29,7 +29,6 @@ class GenerateRequest(BaseModel):
     topic: str
     duration_target: str
     mood: str
-    voice: str = "en-US-AndrewNeural"
 
 async def process_generation(task_id: str, request: GenerateRequest, task_dir: str):
     try:
@@ -44,16 +43,46 @@ async def process_generation(task_id: str, request: GenerateRequest, task_dir: s
         audio_tasks = []
         image_tasks = []
         
+        # Limit concurrent audio requests to avoid rate limiting (max 3 at a time)
+        semaphore = asyncio.Semaphore(3)
+        
+        # Use default voice only
+        DEFAULT_VOICE = "en-US-ChristopherNeural"
+        
+        async def generate_audio_with_limit(scene, audio_path):
+            async with semaphore:
+                # Add small delay between requests to avoid rate limiting
+                await asyncio.sleep(0.5)
+                return await generate_audio(scene['narration'], audio_path, DEFAULT_VOICE)
+        
         for scene in script_data.get("scenes", []):
             # Audio
             audio_path = os.path.join(task_dir, f"audio_{scene['id']}.mp3")
-            audio_tasks.append(generate_audio(scene['narration'], audio_path, request.voice))
+            audio_tasks.append(generate_audio_with_limit(scene, audio_path))
             
             # Image generation disabled for all durations as per user request
             # Visual prompts are still generated in the script but no images are created
             pass
+        
+        # Execute audio generation tasks
+        if audio_tasks:
+            results = await asyncio.gather(*audio_tasks, return_exceptions=True)
+            # Check for any failures
+            failed_scenes = []
+            for i, result in enumerate(results):
+                if isinstance(result, Exception):
+                    scene_id = script_data.get("scenes", [])[i].get("id", i+1) if i < len(script_data.get("scenes", [])) else i+1
+                    error_msg = f"Audio generation failed for scene {scene_id}: {str(result)}"
+                    print(error_msg)
+                    failed_scenes.append((scene_id, str(result)))
             
-        await asyncio.gather(*audio_tasks, *image_tasks)
+            if failed_scenes:
+                error_summary = f"Failed to generate audio for {len(failed_scenes)} scene(s): {', '.join([f'scene {sid}' for sid, _ in failed_scenes])}"
+                raise Exception(error_summary)
+            
+        # Execute image tasks (currently empty)
+        if image_tasks:
+            await asyncio.gather(*image_tasks, return_exceptions=True)
         
         # 3. Package
         # zip_path = create_zip_archive(task_dir, task_id)
