@@ -2,6 +2,9 @@
 
 AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube videos, specifically targeting the Self-growth/Motivation niche with a minimalist modern person visual style. It leverages free AI services to produce scripts, visual prompts and voiceovers with $0 operational costs.
 
+## Bugs
+- TTS generator error
+
 ## 🚀 Features
 
 -   **Automated Content Generation**: Generates a complete asset kit from a single topic.
@@ -21,7 +24,7 @@ AntiFlow is an automated tool designed to generate "Raw Asset Kits" for YouTube 
 ### Backend
 -   **Framework**: FastAPI (Python)
 -   **AI Integration**:
-    -   LLM: Google Gemini API (`gemini-2.0-flash`)
+    -   LLM: Google Gemini API (`gemini-2.5-flash`)
     -   TTS: `edge-tts`
 
 ## 📂 Project Structure
